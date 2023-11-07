@@ -1,0 +1,21 @@
+{
+  "name": "quicklinks",
+  "version": "1.0.0",
+  "description": "this server created for make short urls or slugs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "saurabh jaykar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  }
+}
