@@ -1,13 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import Link from "./models/Link.js";
 dotenv.config();
 
 const app = express();
 
 app.use(express.json()); // middle express
 
-const PORT = process.env.PORT || 8080; // port number initialized
+const PORT = process.env.PORT || 8080; // port number
 
 const connDB = async () => {
   const conn = await mongoose.connect(process.env.MONGO_DB_URI);
@@ -16,7 +17,36 @@ const connDB = async () => {
   }
 };
 
-app.listen(() => {
+
+app.post("/links", async (req, res) => {
+  const { url, slug } = req.body;
+
+  const randomSlug = Math.random().toString(36).substring(2, 7);
+
+  const link = new Link({
+    url: url,
+    slug: slug || randomSlug,
+  });
+
+  try {
+    const savedLink = await link.save();
+
+    return res.json({
+      success: true,
+      data: {
+        shortLink: `${process.env.BASE_URL}/${savedLink.slug}`,
+      },
+      message: "Link saved successfully",
+    });
+  } catch (err) {
+    return res.json({
+      success: false,
+      message: err.message,
+    });
+  }
+});
+
+app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
   connDB();
 });
