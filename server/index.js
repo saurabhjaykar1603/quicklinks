@@ -46,6 +46,26 @@ app.post("/links", async (req, res) => {
   }
 });
 
+app.get("/:slug", async (req, res)=>{
+  const {slug} = req.params;
+
+  const link = await Link.findOne({slug: slug});
+
+  if(!link){
+    return res.json({
+      success: false,
+      message: "Link not found"
+    })
+  }
+
+  await Link.updateOne({slug: slug}, {$set: {
+    clicks: link.clicks + 1
+  }})
+
+  res.redirect(link.url);
+})
+
+
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
   connDB();
