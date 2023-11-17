@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav
-      className="navbar navbar-expand-lg py-3 px-3 shadow sticky-top"
-      style={{ backgroundColor: "#61557F  " }}
+      className="navbar navbar-expand-lg py-3 px-3  shadow sticky-top"
+      style={{ backgroundColor: "#404040" }}
     >
       <div className="container-fluid">
         <Link className="navbar-brand fs-5 ms-3 text-light fw-bold" to="/">

@@ -83,7 +83,7 @@ function Home() {
               </span>
             </div>
             <button
-              className="submit fw-bold"
+              className="submit fw-bold "
               type="button"
               onClick={generateLink}
             >
