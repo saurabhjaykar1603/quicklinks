@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import copyPng from "./images/copy.png";
 import axios from "axios";
 import LinkCard from "../../components/LinkCard/LinkCard";
-
+import Footer from "./../../components/Footer/Footer"
 function Home() {
   const [url, setUrl] = useState("");
   const [slug, setSlug] = useState("");
@@ -47,7 +47,7 @@ function Home() {
       </div>
       <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container">
         <div>
-          <form className="form">
+          <form className="form ">
             <p className="form-title">Generate Short Url Here</p>
             <div className="input-container">
               <input
@@ -77,18 +77,22 @@ function Home() {
                 <img
                   src={copyPng}
                   alt="png"
-                  className="h-25"
+                  className="copy-png"
                   onClick={copyShortUrl}
                 />
               </span>
             </div>
-            <button className="submit" type="button" onClick={generateLink}>
+            <button
+              className="submit fw-bold"
+              type="button"
+              onClick={generateLink}
+            >
               Do Magic
             </button>
           </form>
         </div>
         <div className=" all-links-container  rounded px-2">
-          <div className="" style={{ width: "22rem" }}>
+          <div className="" style={{ width: "26rem" }}>
             <p></p>
             <div className="child">
               {links.map((link, i) => {
@@ -101,6 +105,9 @@ function Home() {
           </div>
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
