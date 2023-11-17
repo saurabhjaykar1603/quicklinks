@@ -1,5 +1,8 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #dbe0e8b8 !important;
+  background-color: #ffffff !important;
+}
+.text-decoration-none {
+  text-decoration: none !important;
 }
