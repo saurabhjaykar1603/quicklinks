@@ -6,6 +6,8 @@ import About from "./views/About/About";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./views/Signup/Signup";
 import Login from "./views/Login/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
