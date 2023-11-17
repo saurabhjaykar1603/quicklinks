@@ -17,7 +17,6 @@ const connDB = async () => {
   }
 };
 
-
 app.post("/api/links", async (req, res) => {
   const { url, slug } = req.body;
 
@@ -46,25 +45,40 @@ app.post("/api/links", async (req, res) => {
   }
 });
 
-app.get("/api/:slug", async (req, res)=>{
-  const {slug} = req.params;
+app.get("/api/:slug", async (req, res) => {
+  const { slug } = req.params;
 
-  const link = await Link.findOne({slug: slug});
+  const link = await Link.findOne({ slug: slug });
 
-  if(!link){
+  if (!link) {
     return res.json({
       success: false,
-      message: "Link not found"
-    })
+      message: "Link not found",
+    });
   }
 
-  await Link.updateOne({slug: slug}, {$set: {
-    clicks: link.clicks + 1
-  }})
+  await Link.updateOne(
+    { slug: slug },
+    {
+      $set: {
+        clicks: link.clicks + 1,
+      },
+    }
+  );
 
   res.redirect(link.url);
-})
+});
 
+// fetch all links api
+app.get("/fetch/links", async (req, res)=>{
+  const links = await Link.find({});
+
+  return res.json({
+    success: true,
+    data: links,
+    message: "Links fetched successfully"
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);

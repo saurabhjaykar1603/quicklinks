@@ -3,11 +3,13 @@ import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import copyPng from "./images/copy.png";
 import axios from "axios";
+import LinkCard from "../../components/LinkCard/LinkCard";
 
 function Home() {
   const [url, setUrl] = useState("");
   const [slug, setSlug] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [links, setLinks] = useState([]);
 
   // generate link
 
@@ -26,6 +28,17 @@ function Home() {
     urlRef.current?.select(); // Select the text inside the input element
     window.navigator.clipboard.writeText(shortUrl);
   }, [shortUrl]);
+
+  const loadLinks = async () => {
+    const response = await axios.get("/fetch/links");
+
+    console.log(response?.data?.data);
+    setLinks(response?.data?.data);
+  };
+
+  useEffect(() => {
+    loadLinks();
+  }, []);
 
   return (
     <>
@@ -74,9 +87,17 @@ function Home() {
             </button>
           </form>
         </div>
-        <div className="">
-          <div className="card m-0 m-md-4" style={{ width: "22rem" }}>
-            <div className="card-body"></div>
+        <div className=" all-links-container  rounded px-2">
+          <div className="" style={{ width: "22rem" }}>
+            <p></p>
+            <div className="">
+              {links.map((link, i) => {
+                const { url, slug, clicks } = link;
+                return (
+                  <LinkCard url={url} slug={slug} clicks={clicks} key={i} />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
