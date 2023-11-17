@@ -5,10 +5,10 @@ function Navbar() {
   return (
     <nav
       className="navbar navbar-expand-lg py-3 px-3 shadow sticky-top"
-      style={{ backgroundColor: "#9CE0FF" }}
+      style={{ backgroundColor: "#61557F  " }}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand fs-5 ms-3" to="/">
+        <Link className="navbar-brand fs-5 ms-3 text-light fw-bold" to="/">
           🔗 Quicklinks
         </Link>
         <button
@@ -25,27 +25,27 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link " aria-current="page" to="/">
+              <Link className="nav-link  text-light" aria-current="page" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link " aria-current="page" to="/about">
+              <Link className="nav-link  text-light" aria-current="page" to="/about">
                 About
               </Link>
             </li>
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link " aria-current="page" to="/login">
+              <Link className="nav-link  text-light" aria-current="page" to="/login">
                 Login
               </Link>
             </li>
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link" to="/signup">
+              <Link className="nav-link text-light" to="/signup">
                 Signup
               </Link>
             </li>
             <li className="nav-item fw-bold">
-              <a className="nav-link">User 👋</a>
+              <a className="nav-link text-light">User 👋</a>
             </li>
           </ul>
           <form className="d-flex" role="search">
