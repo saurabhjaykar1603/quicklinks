@@ -18,7 +18,7 @@ const connDB = async () => {
 };
 
 
-app.post("/links", async (req, res) => {
+app.post("/api/links", async (req, res) => {
   const { url, slug } = req.body;
 
   const randomSlug = Math.random().toString(36).substring(2, 7);
@@ -34,7 +34,7 @@ app.post("/links", async (req, res) => {
     return res.json({
       success: true,
       data: {
-        shortLink: `${process.env.BASE_URL}/${savedLink.slug}`,
+        shortUrl: `${process.env.BASE_URL}/api/${savedLink.slug}`,
       },
       message: "Link saved successfully",
     });
@@ -46,7 +46,7 @@ app.post("/links", async (req, res) => {
   }
 });
 
-app.get("/:slug", async (req, res)=>{
+app.get("/api/:slug", async (req, res)=>{
   const {slug} = req.params;
 
   const link = await Link.findOne({slug: slug});
