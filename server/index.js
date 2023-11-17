@@ -4,9 +4,14 @@ import dotenv from "dotenv";
 import Link from "./models/Link.js";
 dotenv.config();
 
+import path from 'path';
+
+
 const app = express();
 
 app.use(express.json()); // middle express
+
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 8080; // port number
 
@@ -79,6 +84,14 @@ app.get("/fetch/links", async (req, res)=>{
     message: "Links fetched successfully"
   })
 })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'))
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
