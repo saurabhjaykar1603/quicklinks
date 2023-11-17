@@ -87,3 +87,10 @@
   background: transparent; /* optional: makes scrollbar space transparent */
 }
 
+@media screen and (max-width: 778px) {
+  .all-links-container  {
+    display: flex;
+    justify-content: evenly !important;
+   margin-top: 20px !important;
+  }
+}

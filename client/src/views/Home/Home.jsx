@@ -45,7 +45,7 @@ function Home() {
       <div className="sticky-top">
         <Navbar />
       </div>
-      <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly">
+      <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container">
         <div>
           <form className="form">
             <p className="form-title">Generate Short Url Here</p>
@@ -90,7 +90,7 @@ function Home() {
         <div className=" all-links-container  rounded px-2">
           <div className="" style={{ width: "22rem" }}>
             <p></p>
-            <div className="">
+            <div className="child">
               {links.map((link, i) => {
                 const { url, slug, clicks } = link;
                 return (
