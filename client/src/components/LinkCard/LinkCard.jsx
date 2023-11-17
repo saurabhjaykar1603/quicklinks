@@ -3,7 +3,7 @@ import "./LinkCard.css";
 
 function LinkCard({ url, slug, clicks, i }) {
   return (
-    <div key={i} className="card py-2 px-3 mt-2 shadow  ">
+    <div key={i} className="card py-2 px-3 mt-3 link-card-container  ">
       <p className="m-0 mt-1">
         Orginal Url : <span className="text-primary">{url}</span>{" "}
       </p>
@@ -17,7 +17,7 @@ function LinkCard({ url, slug, clicks, i }) {
       <p className="m-0  fw-bold">
         {" "}
         Clicks :
-        <span className="px-2 py-1 bg-primary text-white rounded ms-2 fw">
+        <span className=" rounded ms-2 fw">
           {clicks}
         </span>
       </p>
