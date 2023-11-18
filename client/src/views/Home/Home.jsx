@@ -19,10 +19,7 @@ function Home() {
       url,
       slug,
     });
-    console.log(response);
-    if (!response) {
-      return showToast(response?.data?.data.message);
-    }
+   
     setShortUrl(response?.data?.data?.shortUrl);
   };
 
