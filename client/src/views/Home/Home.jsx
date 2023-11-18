@@ -45,6 +45,9 @@ function Home() {
       <div className="sticky-top">
         <Navbar />
       </div>
+      <div className="container mt-4">
+        <h4 className="text-center fw-bold">QuickLinks 🔗 Instant Connections, Instant Impressions!</h4>
+      </div>
       <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container">
         <div>
           <form className="form ">
@@ -87,7 +90,7 @@ function Home() {
               type="button"
               onClick={generateLink}
             >
-              Do Magic
+              Do Magic 🔗
             </button>
           </form>
         </div>
