@@ -4,7 +4,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import copyPng from "./images/copy.png";
 import axios from "axios";
 import LinkCard from "../../components/LinkCard/LinkCard";
-import Footer from "./../../components/Footer/Footer"
+import Footer from "./../../components/Footer/Footer";
+import showToast from "crunchy-toast";
 function Home() {
   const [url, setUrl] = useState("");
   const [slug, setSlug] = useState("");
@@ -18,15 +19,22 @@ function Home() {
       url,
       slug,
     });
-
+    console.log(response);
+    if (!response) {
+      return showToast(response?.data?.data.message);
+    }
     setShortUrl(response?.data?.data?.shortUrl);
   };
 
   const urlRef = useRef(null); // create input ref
 
   const copyShortUrl = useCallback(() => {
-    urlRef.current?.select(); // Select the text inside the input element
-    window.navigator.clipboard.writeText(shortUrl);
+    if (shortUrl) {
+      urlRef.current?.select(); // Select the text inside the input element
+      if (window.navigator.clipboard.writeText(shortUrl)) {
+        showToast("Your Link coppied successfully ", "success", 6000);
+      }
+    }
   }, [shortUrl]);
 
   const loadLinks = async () => {
@@ -38,6 +46,7 @@ function Home() {
 
   useEffect(() => {
     loadLinks();
+    showToast("all Links loaded", "success", 6000);
   }, []);
 
   return (
@@ -46,7 +55,9 @@ function Home() {
         <Navbar />
       </div>
       <div className="container mt-4">
-        <h4 className="text-center fw-bold">QuickLinks 🔗 Instant Connections, Instant Impressions!</h4>
+        <h4 className="text-center fw-bold">
+          QuickLinks 🔗 Instant Connections, Instant Impressions!
+        </h4>
       </div>
       <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container">
         <div>
