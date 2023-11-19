@@ -12,7 +12,7 @@ function Navbar() {
           🔗 Quicklinks
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler bg-light"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -20,7 +20,7 @@ function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon "></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
@@ -30,12 +30,20 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link  text-light" aria-current="page" to="/about">
+              <Link
+                className="nav-link  text-light"
+                aria-current="page"
+                to="/about"
+              >
                 About
               </Link>
             </li>
             <li className="nav-item me-5 fw-bold">
-              <Link className="nav-link  text-light" aria-current="page" to="/login">
+              <Link
+                className="nav-link  text-light"
+                aria-current="page"
+                to="/login"
+              >
                 Login
               </Link>
             </li>
