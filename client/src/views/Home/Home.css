@@ -80,12 +80,15 @@
   padding: 0;
   height: 490px;
   overflow-y: scroll;
+  width: 495px !important;
+
 }
 
 /* Hide scrollbar on WebKit browsers */
 .all-links-container::-webkit-scrollbar {
   width: 0;
   background: transparent; /* optional: makes scrollbar space transparent */
+
 }
 .copy-png {
   cursor: pointer;
@@ -97,5 +100,6 @@
     display: flex;
     justify-content: evenly !important;
     margin-top: 20px !important;
+    width: 324px !important;
   }
 }
