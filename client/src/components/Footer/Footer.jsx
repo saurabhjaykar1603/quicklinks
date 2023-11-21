@@ -1,6 +1,6 @@
-import React from 'react'
-import git from "./../../views/Home/images/git.png"
-import "./Footer.css"
+import React from "react";
+import git from "./../../views/Home/images/git.png";
+import "./Footer.css";
 
 function Footer() {
   return (
@@ -12,12 +12,12 @@ function Footer() {
               <div className="col-md-12">
                 <div className="d-flex flex-column align-items-center  justify-content-evenly ">
                   <div className="d-flex justify-content-evenly fw-bold mt-3">
-                    <p className="text-white">
+                    <p className="">
                       Developed By © 2023 ||{" "}
                       <a
                         href="https://github.com/saurabhjaykar1603"
                         target="_blank"
-                        className="text-decoration-none text-white"
+                        className="text-decoration-none text-dark"
                       >
                         Saurabh
                       </a>{" "}
@@ -36,7 +36,7 @@ function Footer() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
