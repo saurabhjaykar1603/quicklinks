@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import  { useCallback, useEffect, useRef, useState } from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import copyPng from "./images/copy.png";
@@ -56,7 +56,14 @@ function Home() {
           QuickLinks 🔗 Instant Connections, Instant Impressions!
         </h4>
       </div>
-      <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container">
+      <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container " style={{
+        backgroundImage: "linear-gradient(to bottom, #f7f7f7, #f7f7f7f7)",
+        padding: "20px",
+        borderRadius: "10px",
+        minHeight:"100vh"
+
+
+      }}>
         <div>
           <form className="form ">
             <p className="form-title">Generate Short Url Here</p>
