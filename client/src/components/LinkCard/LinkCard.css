@@ -1,13 +1,49 @@
 .link-card-container {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-  width: 480px;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(to bottom right, #ffffff, #f0f9ff);
+  border: 1px solid rgba(79, 172, 254, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
+
+.link-card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+}
+
+/* Dark mode styles for LinkCard */
+body.dark-mode .link-card-container {
+  background: linear-gradient(to bottom right, #334155, #475569);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  color: #f8fafc;
+}
+
+body.dark-mode .link-card-container:hover {
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+body.dark-mode .text-primary {
+  color: #7dd3fc !important;
+}
+
+.text-primary {
+  color: #4facfe !important;
+}
+
 @media screen and (max-width: 768px) {
   .link-card-container {
-    width: 308px !important;
+    width: 100% !important;
   }
-  .url{
-    font-size:10px ! important;
+  .url {
+    font-size: 0.8rem !important;
   }
 }
-u
+
+@media screen and (max-width: 480px) {
+  .url {
+    font-size: 0.75rem !important;
+  }
+}

@@ -11,6 +11,29 @@ function Home() {
   const [slug, setSlug] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [links, setLinks] = useState([]);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check for saved preference in localStorage
+    const savedDarkMode = localStorage.getItem('darkMode');
+    return savedDarkMode ? JSON.parse(savedDarkMode) : false;
+  });
+
+  // Toggle dark/light mode
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const newMode = !prev;
+      localStorage.setItem('darkMode', JSON.stringify(newMode));
+      return newMode;
+    });
+  };
+
+  // Apply dark mode class to body when darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
 
   // generate link
 
@@ -49,24 +72,17 @@ function Home() {
   return (
     <>
       <div className="sticky-top">
-        <Navbar />
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       </div>
       <div className="container mt-4">
         <h4 className="text-center fw-bold">
           QuickLinks 🔗 Instant Connections, Instant Impressions!
         </h4>
       </div>
-      <div className="d-flex flex-wrap mt-5 align-content-center justify-content-evenly main-container " style={{
-        backgroundImage: "linear-gradient(to bottom, #f7f7f7, #f7f7f7f7)",
-        padding: "20px",
-        borderRadius: "10px",
-        minHeight:"100vh"
-
-
-      }}>
+      <div className="main-container">
         <div>
-          <form className="form ">
-            <p className="form-title">Generate Short Url Here</p>
+          <form className="form">
+            <p className="">Generate Short Url Here</p>
             <div className="input-container">
               <input
                 placeholder="Enter url"
@@ -94,14 +110,14 @@ function Home() {
               <span>
                 <img
                   src={copyPng}
-                  alt="png"
+                  alt="Copy URL"
                   className="copy-png"
                   onClick={copyShortUrl}
                 />
               </span>
             </div>
             <button
-              className="submit fw-bold "
+              className="submit fw-bold"
               type="button"
               onClick={generateLink}
             >
@@ -109,17 +125,14 @@ function Home() {
             </button>
           </form>
         </div>
-        <div className=" all-links-container  rounded px-2">
-          <div className="" style={{ width: "26rem" }}>
-            <p></p>
-            <div className="child">
-              {links.map((link, i) => {
-                const { url, slug, clicks } = link;
-                return (
-                  <LinkCard url={url} slug={slug} clicks={clicks} key={i} />
-                );
-              })}
-            </div>
+        <div className="all-links-container rounded">
+          <div className="links-grid">
+            {links.map((link, i) => {
+              const { url, slug, clicks } = link;
+              return (
+                <LinkCard url={url} slug={slug} clicks={clicks} key={`${slug}-${i}`} />
+              );
+            })}
           </div>
         </div>
       </div>

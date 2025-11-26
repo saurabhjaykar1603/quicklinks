@@ -1,4 +1,23 @@
 .footer-container {
-background-color:  #1a1a1a ! important ;
+  background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+  color: white;
+  padding: 1rem 0;
+  transition: background 0.3s ease;
+}
 
+/* Dark mode styles for Footer */
+body.dark-mode .footer-container {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+}
+
+body.dark-mode .text-dark {
+  color: #f8fafc !important;
+}
+
+body.dark-mode a {
+  color: #7dd3fc !important;
+}
+
+a {
+  color: #2563eb !important;
 }
