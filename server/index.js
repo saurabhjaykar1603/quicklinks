@@ -85,6 +85,32 @@ app.get("/fetch/links", async (req, res)=>{
   })
 })
 
+// delete link by slug
+app.delete("/api/links/:slug", async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const deletedLink = await Link.findOneAndDelete({ slug: slug });
+
+    if (!deletedLink) {
+      return res.status(404).json({
+        success: false,
+        message: "Link not found",
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: "Link deleted successfully",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
