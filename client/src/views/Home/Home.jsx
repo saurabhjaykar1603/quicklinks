@@ -38,12 +38,27 @@ function Home() {
   // generate link
 
   const generateLink = async () => {
-    const response = await axios.post("/api/links", {
-      url,
-      slug,
-    });
-   
-    setShortUrl(response?.data?.data?.shortUrl);
+    try {
+      const response = await axios.post("/api/links", {
+        url,
+        slug,
+      });
+     
+      setShortUrl(response?.data?.data?.shortUrl);
+      
+      // Refresh the links list after creating a new one
+      await loadLinks();
+      
+      // Show success message
+      showToast("Link created successfully!", "success", 3000);
+      
+      // Optionally clear the form
+      setUrl("");
+      setSlug("");
+    } catch (error) {
+      console.error("Error creating link:", error);
+      showToast("Error creating link. Please try again.", "error", 3000);
+    }
   };
 
   const urlRef = useRef(null); // create input ref
