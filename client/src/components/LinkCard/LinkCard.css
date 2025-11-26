@@ -7,6 +7,7 @@
   border: 1px solid rgba(79, 172, 254, 0.2);
   border-radius: 12px;
   transition: all 0.3s ease;
+  padding: 10px;
 }
 
 .link-card-container:hover {
@@ -31,6 +32,19 @@ body.dark-mode .text-primary {
 
 .text-primary {
   color: #4facfe !important;
+}
+
+.btn-danger {
+  background-color: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 768px) {

@@ -1,4 +1,4 @@
-import  { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import copyPng from "./images/copy.png";
@@ -13,15 +13,15 @@ function Home() {
   const [links, setLinks] = useState([]);
   const [darkMode, setDarkMode] = useState(() => {
     // Check for saved preference in localStorage
-    const savedDarkMode = localStorage.getItem('darkMode');
+    const savedDarkMode = localStorage.getItem("darkMode");
     return savedDarkMode ? JSON.parse(savedDarkMode) : false;
   });
 
   // Toggle dark/light mode
   const toggleDarkMode = () => {
-    setDarkMode(prev => {
+    setDarkMode((prev) => {
       const newMode = !prev;
-      localStorage.setItem('darkMode', JSON.stringify(newMode));
+      localStorage.setItem("darkMode", JSON.stringify(newMode));
       return newMode;
     });
   };
@@ -29,9 +29,9 @@ function Home() {
   // Apply dark mode class to body when darkMode changes
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add('dark-mode');
+      document.body.classList.add("dark-mode");
     } else {
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove("dark-mode");
     }
   }, [darkMode]);
 
@@ -43,21 +43,35 @@ function Home() {
         url,
         slug,
       });
-     
+
       setShortUrl(response?.data?.data?.shortUrl);
-      
+
       // Refresh the links list after creating a new one
       await loadLinks();
-      
+
       // Show success message
       showToast("Link created successfully!", "success", 3000);
-      
+
       // Optionally clear the form
       setUrl("");
       setSlug("");
     } catch (error) {
       console.error("Error creating link:", error);
       showToast("Error creating link. Please try again.", "error", 3000);
+    }
+  };
+
+  // delete link
+  const deleteLink = async (slugToDelete) => {
+    try {
+      await axios.delete(`/api/links/${slugToDelete}`);
+      // Refresh the links list after deletion
+      showToast("Link deleted successfully!", "success", 3000);
+    } catch (error) {
+      console.error("Error deleting link:", error);
+      showToast("Error deleting link. Please try again.", "error", 3000);
+    } finally {
+      await loadLinks();
     }
   };
 
@@ -145,7 +159,13 @@ function Home() {
             {links.map((link, i) => {
               const { url, slug, clicks } = link;
               return (
-                <LinkCard url={url} slug={slug} clicks={clicks} key={`${slug}-${i}`} />
+                <LinkCard
+                  url={url}
+                  slug={slug}
+                  clicks={clicks}
+                  key={`${slug}-${i}`}
+                  onDelete={deleteLink}
+                />
               );
             })}
           </div>
