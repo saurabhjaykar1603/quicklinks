@@ -36,7 +36,7 @@ body.dark-mode .text-primary {
 }
 
 .btn-danger {
-  background-color: #ef4444 !important;
+  background-color: #ffa1a1 !important;
   border-color: #ef4444 !important;
   color: white !important;
   transition: all 0.3s ease;
