@@ -8,6 +8,7 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   padding: 10px;
+  position: relative; /* Needed for absolute positioning of delete button */
 }
 
 .link-card-container:hover {

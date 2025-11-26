@@ -1,4 +1,3 @@
-import React from "react";
 import "./LinkCard.css";
 import showToast from "crunchy-toast";
 import axios from "axios";
@@ -19,6 +18,33 @@ function LinkCard({ url, slug, clicks, i, onDelete }) {
 
   return (
     <div key={i} className="card py-2 px-3 mt-3 link-card-container">
+      {/* Delete button positioned in top right corner */}
+      <div style={{ 
+          position: 'absolute', 
+          top: '10px', 
+          right: '10px',
+          zIndex: 1
+        }}>
+        <button 
+          className="btn btn-danger btn-sm"
+          onClick={handleDelete}
+          style={{
+            borderRadius: '50%',
+            width: '30px',
+            height: '30px',
+            padding: '0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '14px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          }}
+          aria-label="Delete link"
+        >
+          🗑️
+        </button>
+      </div>
+      
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ flex: 1 }}>
           <p className="m-0 mt-1 url">
@@ -36,24 +62,7 @@ function LinkCard({ url, slug, clicks, i, onDelete }) {
             Clicks :<span className="url rounded ms-2 fw">{clicks}</span>
           </p>
         </div>
-        <div>
-          <button 
-            className="btn btn-danger btn-sm"
-            onClick={handleDelete}
-            style={{
-              borderRadius: '50%',
-              width: '30px',
-              height: '30px',
-              padding: '0',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '14px'
-            }}
-          >
-            ×
-          </button>
-        </div>
+        <div style={{ width: '30px', visibility: 'hidden' }}> {/* Spacer for alignment */}</div>
       </div>
     </div>
   );
