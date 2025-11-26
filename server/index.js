@@ -76,7 +76,7 @@ app.get("/api/:slug", async (req, res) => {
 
 // fetch all links api
 app.get("/fetch/links", async (req, res)=>{
-  const links = await Link.find({});
+  const links = await Link.find({}).sort({ createdAt: -1 });
 
   return res.json({
     success: true,

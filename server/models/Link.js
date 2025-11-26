@@ -18,6 +18,8 @@ const linkSchema = new Schema({
     default: 0,
     require: true
   },
+},{
+  timestamps: true,
 });
 
 const Link = model("Link", linkSchema);
