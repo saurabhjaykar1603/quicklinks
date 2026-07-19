@@ -147,6 +147,16 @@
   display: none;
 }
 
+/* logout inside the mobile dropdown — hidden on desktop */
+.ql-nav-logout {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
 @media screen and (max-width: 820px) {
   .ql-menu-toggle {
     display: grid;
@@ -182,5 +192,28 @@
 
   .ql-user-chip {
     padding: 0.25rem;
+  }
+}
+
+/* small phones: navbar must never overflow the viewport */
+@media screen and (max-width: 600px) {
+  .ql-navbar-inner {
+    gap: 0.6rem;
+  }
+
+  .ql-nav-actions {
+    gap: 0.45rem;
+  }
+
+  .ql-logout {
+    display: none;
+  }
+
+  .ql-nav-logout {
+    display: block;
+  }
+
+  .ql-brand-name {
+    font-size: 1.1rem;
   }
 }

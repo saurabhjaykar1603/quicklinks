@@ -41,6 +41,11 @@ function Navbar() {
           <NavLink to="/about" className="ql-nav-link">
             About
           </NavLink>
+          {user && (
+            <button className="ql-nav-link ql-nav-logout" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </nav>
 
         <div className="ql-nav-actions">
