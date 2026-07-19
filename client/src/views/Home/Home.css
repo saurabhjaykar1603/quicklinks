@@ -1,377 +1,372 @@
-/* Main container layout */
-.main-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 1.5rem;
-  min-height: calc(100vh - 200px);
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  border-radius: 15px;
-  margin: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Form styles */
-.form {
-  background: linear-gradient(to bottom right, #ffffff, #f0f9ff);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.form-title {
-  font-size: 1.6rem;
-  line-height: 1.75rem;
-  font-weight: 700;
-  text-align: center;
-  color: #2d3748;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #4facfe, #00f2fe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.input-container {
+/* ---------- hero — teal band ---------- */
+.ql-hero {
   position: relative;
-  margin-bottom: 1.2rem;
-}
-
-.input-container input,
-.form button {
-  outline: none;
-  border: 2px solid transparent;
-  width: 100%;
-  padding: 0.875rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.input-container input {
-  background: rgba(255, 255, 255, 0.9);
-  padding-right: 4rem;
-  border: 2px solid rgba(79, 172, 254, 0.2);
-}
-
-.input-container input:focus {
-  border-color: #4facfe;
-  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
-}
-
-.input-container span {
-  display: grid;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0.5rem;
-  padding: 0 0.75rem;
-  place-content: center;
-  cursor: pointer;
-  height: 100%;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.input-container span:hover {
-  background-color: rgba(79, 172, 254, 0.1);
-}
-
-.submit {
-  display: block;
-  padding: 1rem;
-  background: linear-gradient(45deg, #4facfe, #00f2fe, #4facfe, #00f2fe);
-  background-size: 300% 300%;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  width: 100% !important;
-  border-radius: 50px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 1rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
-  position: relative;
+  background: var(--teal);
+  padding: 2.2rem 0 0;
   overflow: hidden;
-  animation: gradientShift 3s ease infinite, pulse 2s ease-in-out infinite;
 }
 
-.submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
-  animation: gradientShift 1.5s ease infinite, pulse 1.5s ease-in-out infinite;
+body.dark-mode .ql-hero {
+  background: #23806a;
 }
 
-.submit::before {
-  content: '';
+.ql-hero-blob {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: 0.5s;
-  animation: shimmer 1.5s infinite;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.08);
+  pointer-events: none;
 }
 
-.submit:hover::before {
-  left: 100%;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
-
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-
-/* Dark mode styles */
-body.dark-mode {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-
-body.dark-mode .main-container {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-
-body.dark-mode .form {
-  background: linear-gradient(to bottom right, #334155, #475569);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .form-title {
-  color: #f8fafc;
-  -webkit-text-fill-color: transparent;
-  background: linear-gradient(45deg, #7dd3fc, #a7f3d0);
-}
-
-body.dark-mode .input-container input {
-  background: rgba(51, 65, 85, 0.9);
-  border: 2px solid rgba(125, 211, 252, 0.2);
-  color: #f8fafc;
-}
-
-body.dark-mode .input-container input:focus {
-  border-color: #7dd3fc;
-  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.1);
-}
-
-body.dark-mode .input-container span:hover {
-  background-color: rgba(125, 211, 252, 0.1);
-}
-
-body.dark-mode .submit {
-  background: linear-gradient(45deg, #0ea5e9, #10b981);
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
-}
-
-body.dark-mode .submit:hover {
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
-  background: linear-gradient(45deg, #10b981, #0ea5e9);
-}
-
-.signup-link {
-  color: #6b7280;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  text-align: center;
-}
-
-.signup-link a {
-  text-decoration: underline;
-}
-
-/* All links container */
-.all-links-container {
-  padding: 0;
-  height: 500px;
-  max-height: 60vh;
-  overflow-y: auto;
-  width: 100% !important;
-  margin-top: 1rem;
-  padding: 0.5rem;
-}
-
-/* Hide scrollbar on WebKit browsers */
-.all-links-container::-webkit-scrollbar {
-  width: 8px;
+.ql-hero-blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -220px;
+  right: -120px;
+  border: 30px solid rgba(255, 250, 240, 0.07);
   background: transparent;
 }
 
-.all-links-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.ql-hero-blob-2 {
+  width: 260px;
+  height: 260px;
+  bottom: -140px;
+  left: -80px;
+}
+
+.ql-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ql-hero-mascot {
+  animation: ql-bob 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 18px rgba(35, 60, 50, 0.35));
+}
+
+@keyframes ql-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.ql-hero-title {
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+  font-weight: 800;
+  color: #fffaf0;
+  margin: 0.7rem 0 0.4rem;
+  line-height: 1.1;
+}
+
+.ql-hero-pop {
+  color: #ffe8a3;
+  text-decoration: underline wavy rgba(255, 232, 163, 0.6) 3px;
+  text-underline-offset: 7px;
+}
+
+.ql-hero-sub {
+  color: rgba(255, 250, 240, 0.85);
+  font-size: 1.02rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* the big shorten bar */
+.ql-hero-bar {
+  display: flex;
+  width: min(640px, 100%);
+  margin-top: 1.5rem;
+  border-radius: 14px;
+  background: rgba(30, 74, 62, 0.55);
+  padding: 6px;
+  gap: 6px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.ql-hero-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fffaf0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+}
+
+.ql-hero-input::placeholder {
+  color: rgba(255, 250, 240, 0.6);
+  font-weight: 400;
+}
+
+.ql-hero-btn {
+  flex-shrink: 0;
+  padding: 0.75rem 1.6rem;
+}
+
+.ql-hero-slug {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  color: rgba(255, 250, 240, 0.8);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.ql-hero-slug-input {
+  width: 150px;
+  background: rgba(30, 74, 62, 0.55);
+  border: none;
+  outline: none;
   border-radius: 10px;
+  color: #fffaf0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.45rem 0.8rem;
 }
 
-.all-links-container::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
+.ql-hero-slug-input::placeholder {
+  color: rgba(255, 250, 240, 0.5);
 }
 
-.all-links-container::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+.ql-result {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  padding: 0.55rem 0.6rem 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: #fffaf0;
+  box-shadow: var(--shadow-md);
 }
 
-.copy-png {
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
+.ql-result a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #23806a;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Tablet styles */
-@media screen and (min-width: 768px) {
-  .main-container {
+.ql-copy-btn {
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  color: #3b2f2a;
+  border-color: rgba(59, 47, 42, 0.2);
+}
+
+.ql-hero-wave {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 2.2rem;
+}
+
+/* ---------- sections ---------- */
+.ql-section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.ql-links-section {
+  padding-top: 1.8rem;
+}
+
+.ql-links-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.ql-links-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ql-links-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ql-links-search {
+  width: 220px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.88rem;
+}
+
+.ql-link-skeleton {
+  height: 132px;
+  border-radius: var(--radius-lg);
+}
+
+@media screen and (max-width: 600px) {
+  .ql-links-controls {
+    width: 100%;
+  }
+
+  .ql-links-search {
+    flex: 1;
+    width: auto;
+  }
+}
+
+.ql-links-count {
+  display: grid;
+  place-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.ql-links-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 760px) {
+  .ql-links-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
-    margin: 1.5rem 2rem;
-  }
-  
-  .form {
-    margin: 0;
-  }
-  
-  .all-links-container {
-    margin-top: 0;
-    height: 600px;
   }
 }
 
-/* Desktop styles */
-@media screen and (min-width: 1024px) {
-  .main-container {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    margin: 2rem 3rem;
-    padding: 2rem;
-  }
-  
-  .form {
-    max-width: 450px;
-    padding: 2rem;
-  }
-  
-  .all-links-container {
-    height: 650px;
-  }
-  
-  .input-container input {
-    padding-right: 4rem;
+@media screen and (min-width: 1240px) {
+  .ql-links-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-/* Large desktop styles */
-@media screen and (min-width: 1400px) {
-  .main-container {
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    margin: 2.5rem 5rem;
-    padding: 2.5rem;
-  }
-  
-  .all-links-container {
-    height: 700px;
+/* ---------- empty state ---------- */
+.ql-empty {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ql-empty-emoji {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.ql-empty-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin: 0.8rem 0 0.25rem;
+  color: var(--ink);
+}
+
+.ql-empty-sub {
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ---------- how it works ---------- */
+.ql-how {
+  padding-top: 3rem;
+}
+
+.ql-how-title {
+  text-align: center;
+  color: var(--teal-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.35rem;
+}
+
+.ql-how-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 760px) {
+  .ql-how-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-/* Mobile specific adjustments */
-@media screen and (max-width: 767px) {
-  .main-container {
-    padding: 1rem;
-    margin: 0.5rem;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    min-height: auto;
-  }
-  
-  .form {
-    padding: 1.25rem;
-    max-width: 100%;
-  }
-  
-  .input-container input {
-    padding-right: 3rem;
-  }
-  
-  .all-links-container {
-    height: 450px;
-    padding: 0.25rem;
-  }
-  
-  .form-title {
-    font-size: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-  
-  .submit {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-  }
+.ql-how-rule {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--teal);
+  margin-bottom: 1.1rem;
 }
 
-/* Extra small devices */
-@media screen and (max-width: 480px) {
-  .main-container {
-    padding: 0.75rem;
-    margin: 0.25rem;
-    gap: 1rem;
-  }
-  
-  .form {
-    padding: 1rem;
-  }
-  
-  .form-title {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .input-container {
-    margin-bottom: 0.75rem;
-  }
-  
-  .input-container input {
-    padding: 0.65rem;
-    font-size: 0.85rem;
-  }
-  
-  .submit {
-    padding: 0.7rem;
-    font-size: 0.85rem;
-  }
-  
-  .all-links-container {
-    height: 400px;
-  }
+.ql-how-step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0 0 0.9rem;
+}
+
+.ql-how-num {
+  display: grid;
+  place-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fffaf0;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.ql-how-pic {
+  display: grid;
+  place-content: center;
+  height: 130px;
+  border-radius: var(--radius);
+  background: #fdf3d7;
+  border: 2px solid var(--border);
+}
+
+body.dark-mode .ql-how-pic {
+  background: var(--surface-2);
+}
+
+.ql-how-pic span {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 6px rgba(59, 47, 42, 0.18));
+}
+
+.ql-how-text {
+  color: var(--ink-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0.9rem 0 0;
 }

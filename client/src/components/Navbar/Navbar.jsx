@@ -1,49 +1,86 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useToast } from "toast-ninja";
+import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../hooks/useTheme";
+import Ninja from "../Ninja/Ninja";
+import "./Navbar.css";
 
-function Navbar({ darkMode, toggleDarkMode }) {
+function Navbar() {
+  const { user, logout } = useAuth();
+  const { darkMode, toggleDarkMode } = useTheme();
+  const { showToast } = useToast();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    showToast({ message: "Logged out successfully!", type: "success" });
+    navigate("/login");
+  };
+
   return (
-    <nav
-      className="navbar navbar-expand-lg py-3 px-3 shadow sticky-top"
-      style={{ 
-        backgroundColor: darkMode ? "#0f172a" : "#4facfe",
-        backgroundImage: darkMode 
-          ? "linear-gradient(135deg, #0f172a, #1e293b)" 
-          : "linear-gradient(135deg, #4facfe, #00f2fe)"
-      }}
-    >
-      <div className="container-fluid">
-        <Link className="navbar-brand fs-5 ms-3 text-light fw-bold" to="/">
-          🔗 Quicklinks
+    <header className="ql-navbar">
+      <div className="ql-container ql-navbar-inner">
+        <Link className="ql-brand" to="/">
+          <span className="ql-brand-mark">
+            <Ninja size={30} mood="eyes" />
+          </span>
+          <span className="ql-brand-name">
+            Quick<span className="ql-brand-accent">Links</span>
+          </span>
         </Link>
-        <div className="d-flex align-items-center">
+
+        <nav className={`ql-nav ${menuOpen ? "open" : ""}`}>
+          <NavLink to="/" className="ql-nav-link" end>
+            Shorten
+          </NavLink>
+          <NavLink to="/dashboard" className="ql-nav-link">
+            Dashboard
+          </NavLink>
+          <NavLink to="/about" className="ql-nav-link">
+            About
+          </NavLink>
+        </nav>
+
+        <div className="ql-nav-actions">
           <button
-            className="btn btn-sm me-2"
-            style={{ 
-              backgroundColor: darkMode ? "#38bdf8" : "#0ea5e9", 
-              color: "white",
-              borderRadius: "20px",
-              width: "40px",
-              height: "40px"
-            }}
+            className="ql-icon-btn"
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
+            title="Toggle dark mode"
           >
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? "☀️" : "🌙"}
           </button>
+
+          {user && (
+            <>
+              <span className="ql-user-chip" title={user.email}>
+                <span className="ql-user-avatar">
+                  {(user.fullName || user.username || "?")
+                    .charAt(0)
+                    .toUpperCase()}
+                </span>
+                <span className="ql-user-name">
+                  {user.fullName || user.username}
+                </span>
+              </span>
+              <button className="ql-btn ql-btn-ghost ql-logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          )}
+
           <button
-            className="navbar-toggler bg-light"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            className="ql-icon-btn ql-menu-toggle"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
           >
-            <span className="navbar-toggler-icon "></span>
+            {menuOpen ? "✕" : "☰"}
           </button>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
 

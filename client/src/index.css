@@ -1,15 +1,278 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
-body {
-  margin: 0px;
-  padding: 0px;
-  background: linear-gradient(to bottom, #ffffff, #f0f9ff) !important;
-  font-family: 'Exo 2', sans-serif !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap");
+
+/* ---------- design tokens · retro ninja ---------- */
+:root {
+  --font-sans: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+
+  /* light mode — cream & teal */
+  --page: #f7f0e0;
+  --surface: #fffaf0;
+  --surface-2: #efe5cf;
+  --ink: #3b2f2a;
+  --ink-secondary: #6d5c50;
+  --ink-muted: #a3907f;
+  --border: rgba(59, 47, 42, 0.14);
+  --grid: #e6dcc6;
+
+  /* coral = action, teal = identity */
+  --accent: #e4573f;
+  --accent-strong: #b8432f;
+  --accent-soft: #fbe3dc;
+  --teal: #2f9c81;
+  --teal-deep: #23806a;
+  --teal-soft: #d7efe7;
+  --navbar-bg: #362a24;
+  --navbar-ink: #f7f0e0;
+  --brand-gradient: linear-gradient(135deg, #ef6a56, #e4573f);
+
+  /* chart series (validated) */
+  --series-1: #2f9c81;
+  --series-2: #ef6a56;
+  --series-3: #d98e04;
+  --series-5: #6d5c50;
+
+  --danger: #d03b3b;
+  --success: #0ca30c;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 0 rgba(59, 47, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(59, 47, 42, 0.14);
+  --shadow-lg: 0 16px 48px rgba(59, 47, 42, 0.18);
 }
+
 body.dark-mode {
-  background: linear-gradient(to bottom, #0f172a, #1e293b) !important;
-  color: #f8fafc;
+  --page: #221a16;
+  --surface: #2d241f;
+  --surface-2: #3a2f28;
+  --ink: #f7f0e0;
+  --ink-secondary: #cbbba9;
+  --ink-muted: #9a8c80;
+  --border: rgba(247, 240, 224, 0.13);
+  --grid: #45392f;
+
+  --accent: #f08a76;
+  --accent-strong: #c74a35;
+  --accent-soft: #46281f;
+  --teal: #3aa188;
+  --teal-deep: #2f9c81;
+  --teal-soft: #1d3a32;
+  --navbar-bg: #1b1512;
+  --navbar-ink: #f7f0e0;
+  --brand-gradient: linear-gradient(135deg, #f08a76, #e06550);
+
+  --series-1: #3aa188;
+  --series-2: #e06550;
+  --series-3: #c98500;
+  --series-5: #cbbba9;
+
+  --danger: #e66767;
+  --success: #0ca30c;
+
+  --shadow-sm: 0 2px 0 rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
 }
+
+/* ---------- base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--page) !important;
+  color: var(--ink);
+  font-family: var(--font-sans) !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--teal-deep);
+}
+
 .text-decoration-none {
   text-decoration: none !important;
+}
+
+/* ---------- shared ui ---------- */
+.ql-container {
+  width: min(1160px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.ql-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.ql-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease,
+    border-bottom-width 0.12s ease, background 0.15s ease;
+}
+
+.ql-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* chunky press-me button, like an arcade key */
+.ql-btn-primary {
+  background: var(--accent);
+  color: #fffaf0;
+  text-transform: uppercase;
+  border-bottom: 4px solid var(--accent-strong);
+}
+
+.ql-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.ql-btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.ql-btn-ghost {
+  background: transparent;
+  color: var(--ink-secondary);
+  border: 2px solid var(--border);
+}
+
+.ql-btn-ghost:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.ql-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ql-input::placeholder {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.ql-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent);
+}
+
+.ql-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  background: var(--teal-soft);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+}
+
+.ql-select {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.ql-select:hover,
+.ql-select:focus {
+  border-color: var(--teal);
+}
+
+/* ---------- accessibility ---------- */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--teal) 60%, transparent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.ql-navbar :focus-visible {
+  outline-color: color-mix(in srgb, #fffaf0 60%, transparent);
+}
+
+/* ---------- skeleton loading ---------- */
+.ql-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-radius: 12px;
+}
+
+.ql-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--surface) 70%, transparent),
+    transparent
+  );
+  animation: ql-shimmer 1.4s ease infinite;
+}
+
+@keyframes ql-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
 }

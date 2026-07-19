@@ -1,23 +1,94 @@
-.footer-container {
-  background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
-  color: white;
-  padding: 1rem 0;
-  transition: background 0.3s ease;
+.ql-footer {
+  margin-top: 3rem;
+  border-top: 4px solid var(--teal);
+  background: var(--navbar-bg);
 }
 
-/* Dark mode styles for Footer */
-body.dark-mode .footer-container {
-  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+.ql-footer .ql-footer-logo,
+.ql-footer .ql-footer-meta p {
+  color: var(--navbar-ink);
 }
 
-body.dark-mode .text-dark {
-  color: #f8fafc !important;
+.ql-footer .ql-footer-tagline {
+  color: rgba(247, 240, 224, 0.55);
 }
 
-body.dark-mode a {
-  color: #7dd3fc !important;
+.ql-footer .ql-footer-meta a {
+  color: var(--teal);
 }
 
-a {
-  color: #2563eb !important;
+.ql-footer .ql-footer-gh {
+  color: rgba(247, 240, 224, 0.8) !important;
+  border-color: rgba(247, 240, 224, 0.25);
+}
+
+.ql-footer .ql-footer-gh:hover {
+  background: rgba(247, 240, 224, 0.12);
+}
+
+.ql-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  flex-wrap: wrap;
+}
+
+.ql-footer-logo {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.ql-footer-tagline {
+  margin: 0.25rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+.ql-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ql-footer-meta p {
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 0.88rem;
+}
+
+.ql-footer-meta a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ql-footer-meta a:hover {
+  text-decoration: underline;
+}
+
+.ql-footer-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--ink-secondary) !important;
+  transition: background 0.15s ease;
+}
+
+.ql-footer-gh:hover {
+  background: var(--surface-2);
+  text-decoration: none !important;
+}
+
+@media screen and (max-width: 600px) {
+  .ql-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }

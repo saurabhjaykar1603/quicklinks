@@ -1,0 +1,478 @@
+.ql-dash {
+  padding: 2.25rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ql-dash-loading {
+  display: grid;
+  place-content: center;
+  min-height: 50vh;
+}
+
+.ql-dash-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.ql-dash-sub {
+  color: var(--ink-secondary);
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+}
+
+.ql-dash-empty {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.ql-dash-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ql-back-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--teal-deep);
+  text-decoration: none;
+  margin-bottom: 0.35rem;
+}
+
+.ql-back-link:hover {
+  text-decoration: underline;
+}
+
+.ql-dash-dest {
+  color: var(--teal-deep);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.ql-dash-dest:hover {
+  text-decoration: underline;
+}
+
+/* ---------- range filter ---------- */
+.ql-range-filter {
+  display: inline-flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.ql-range-btn {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ql-range-btn:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.ql-range-btn.active {
+  background: var(--teal);
+  color: #fffaf0;
+}
+
+/* ---------- skeletons ---------- */
+.ql-stat-skeleton {
+  height: 118px;
+  border-radius: var(--radius-lg);
+}
+
+.ql-panel-skeleton {
+  height: 330px;
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- table extras ---------- */
+.ql-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ql-table-search {
+  width: 220px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.86rem;
+}
+
+.ql-dash-table-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+}
+
+.ql-dash-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--ink-secondary);
+}
+
+/* ---------- mobile table cards ---------- */
+.ql-table-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .ql-table-wrap {
+    display: none;
+  }
+
+  .ql-table-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .ql-tm-card {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+  }
+
+  .ql-tm-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .ql-tm-clicks {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--teal-deep);
+    background: var(--teal-soft);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .ql-tm-url {
+    margin: 0.45rem 0 0;
+    color: var(--ink-secondary);
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ql-tm-date {
+    margin: 0.3rem 0 0;
+    color: var(--ink-muted);
+    font-size: 0.78rem;
+  }
+
+  .ql-range-filter {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .ql-range-btn {
+    flex: 1;
+    padding: 0.42rem 0.5rem;
+  }
+}
+
+/* compact chart (30 days) */
+.ql-weekly-compact {
+  gap: 3px;
+}
+
+.ql-weekly-compact .ql-weekly-bar {
+  max-width: 18px;
+  border-radius: 3px 3px 0 0;
+}
+
+.ql-weekly-compact .ql-weekly-day {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+/* ---------- stat tiles ---------- */
+.ql-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.ql-stat-tile {
+  padding: 1.2rem 1.3rem;
+}
+
+.ql-stat-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.ql-stat-value {
+  margin: 0.4rem 0 0;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ql-stat-hint {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+}
+
+/* ---------- panels ---------- */
+.ql-dash-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 900px) {
+  .ql-dash-grid {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.ql-dash-panel {
+  padding: 1.4rem 1.5rem;
+}
+
+/* ---------- weekly chart ---------- */
+.ql-weekly {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  height: 220px;
+  margin-top: 1.25rem;
+}
+
+.ql-weekly-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.ql-weekly-track {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--grid);
+}
+
+.ql-weekly-bar {
+  position: relative;
+  width: 100%;
+  max-width: 46px;
+  margin-inline: auto;
+  background: var(--series-1);
+  border-radius: 4px 4px 0 0;
+  transition: filter 0.15s ease;
+}
+
+.ql-weekly-bar:hover {
+  filter: brightness(1.15);
+}
+
+.ql-weekly-tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--page);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: 7px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.ql-weekly-bar:hover .ql-weekly-tip {
+  display: block;
+}
+
+.ql-weekly-day {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* ---------- device breakdown ---------- */
+.ql-devices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+}
+
+.ql-device-row {
+  display: grid;
+  grid-template-columns: 95px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ql-device-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.ql-device-track {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.ql-device-bar {
+  height: 100%;
+  border-radius: 999px;
+  min-width: 6px;
+  transition: width 0.4s ease;
+}
+
+.ql-device-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+/* ---------- browsers ---------- */
+.ql-browsers-title {
+  margin-top: 1.6rem;
+}
+
+.ql-browser-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.ql-browser-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+}
+
+.ql-browser-chip strong {
+  color: var(--ink);
+}
+
+/* ---------- table ---------- */
+.ql-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.ql-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.ql-table th {
+  text-align: left;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--grid);
+}
+
+.ql-table td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--grid);
+  color: var(--ink-secondary);
+  vertical-align: middle;
+}
+
+.ql-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ql-table tbody tr:hover td {
+  background: var(--surface-2);
+}
+
+.ql-td-slug {
+  font-weight: 700;
+  color: var(--ink) !important;
+  white-space: nowrap;
+}
+
+.ql-td-url {
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ql-th-num,
+.ql-td-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink) !important;
+}
+
+.ql-td-date {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
